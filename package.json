@@ -1,0 +1,56 @@
+{
+  "name": "@mixer/client-websocket",
+  "version": "0.0.0",
+  "description": "Websocket wrapper for common Mixer websocket uses",
+  "main": "dist/module/index.js",
+  "typings": "dist/module/index.d.ts",
+  "sideEffects": false,
+  "scripts": {
+    "test:unit": "cross-env TS_NODE_COMPILER_OPTIONS={\\\"module\\\":\\\"commonjs\\\"} mocha --compilers ts:ts-node/register test/unit/**/*.test.js",
+    "test:integrate": "cross-env TS_NODE_COMPILER_OPTIONS={\\\"module\\\":\\\"commonjs\\\"} mocha --compilers ts:ts-node/register test/integration/**/*.test.js",
+    "test": "npm run test:unit && npm run lint",
+    "build:ts:module": "tsc --declaration",
+    "build:ts:commonjs": "tsc --outDir dist/commonjs --module commonjs --target es6",
+    "build": "rimraf dist && npm run build:ts:module && npm run build:ts:commonjs",
+    "prepublish": "npm run build",
+    "lint": "tslint --project tsconfig.json \"src/**/*.ts\"",
+    "lint:fix": "tslint --project tsconfig.json --fix \"src/**/*.ts\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mixer/client-websocket.git"
+  },
+  "author": "Microsoft <contact@mixer.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mixer/client-websocket/issues"
+  },
+  "homepage": "https://github.com/mixer/client-websocket",
+  "devDependencies": {
+    "@types/chai": "^3.4.34",
+    "@types/mocha": "^2.2.33",
+    "@types/node": "^6.0.51",
+    "@types/ws": "0.0.40",
+    "chai": "^3.5.0",
+    "cross-env": "^5.1.0",
+    "mocha": "^3.4.2",
+    "rimraf": "^2.5.4",
+    "sinon": "^2.3.6",
+    "ts-node": "^3.2.0",
+    "tslint": "^5.5.0",
+    "tslint-microsoft-contrib": "^5.0.1",
+    "typescript": "^2.4.1"
+  },
+  "dependencies": {
+    "ws": "^1.1.5"
+  },
+  "prettier": {
+    "trailingComma": "all",
+    "singleQuote": true,
+    "printWidth": 100,
+    "parser": "typescript"
+  },
+  "publishConfig": {
+    "registry": "https://watchmixer.pkgs.visualstudio.com/_packaging/mixer/npm/registry/"
+  }
+}
