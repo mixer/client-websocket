@@ -36,11 +36,18 @@ function timeout(delay: number): Promise<void> {
 }
 
 function isBrowserWebSocket(socket: any): socket is WebSocket {
-    return !socket.ping;
+    // React Native socket.ping exists but doesn't work for our needs.
+    return !socket.ping || isReactNative();
 }
 
 function isNodeWebSocket(socket: any): socket is NodeWebSocket {
     return !isBrowserWebSocket(socket);
+}
+
+function isReactNative() {
+    return (typeof document === 'undefined'
+        && typeof navigator !== 'undefined'
+        && navigator.product === 'ReactNative');
 }
 
 /**
