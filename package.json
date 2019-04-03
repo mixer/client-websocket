@@ -1,8 +1,9 @@
 {
   "name": "@mixer/client-websocket",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Websocket wrapper for common Mixer websocket uses",
-  "main": "dist/module/index.js",
+  "main": "dist/commonjs/index.js",
+  "module": "dist/module/index.js",
   "typings": "dist/module/index.d.ts",
   "sideEffects": false,
   "scripts": {
