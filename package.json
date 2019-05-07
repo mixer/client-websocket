@@ -1,7 +1,7 @@
 {
-  "name": "@mixer/client-websocket",
-  "version": "0.0.2",
-  "description": "Websocket wrapper for common Mixer websocket uses",
+  "name": "@mixer/chat-client-websocket",
+  "version": "0.0.3",
+  "description": "Websocket wrapper for Mixer's chat websocket uses",
   "main": "dist/commonjs/index.js",
   "module": "dist/module/index.js",
   "typings": "dist/module/index.d.ts",
