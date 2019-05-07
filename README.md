@@ -8,7 +8,7 @@ This is a client websocket library for [Mixer](https://mixer.com) written in Nod
 
 It's available on npm:
 ```
-npm install --save @mixer/client-websocket
+npm install --save @mixer/chat-client-websocket
 ```
 
 To use the full client library, see https://github.com/mixer/client-node
