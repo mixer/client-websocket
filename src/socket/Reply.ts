@@ -1,13 +1,13 @@
-export interface IPacket {
-    error: string;
-    data: any;
-}
+import { IPacket } from '././types';
 
 /**
  * Simple wrapper that waits for a dispatches a method reply.
  */
 export class Reply {
-    constructor(private resolve: (value: any) => void, private reject: (value: any) => void) {}
+    constructor(
+        private resolve: (value: IPacket['data']) => void,
+        private reject: (value: IPacket['error']) => void,
+    ) {}
 
     /**
      * Handles "reply" packet data from the websocket.

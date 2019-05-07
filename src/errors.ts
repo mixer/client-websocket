@@ -1,9 +1,7 @@
 import { IncomingMessage } from 'http';
+import { ErrorCode, StringError } from './socket/types';
 
 // tslint:disable max-classes-per-file
-
-export const UNOTFOUND = 'UNOTFOUND';
-export const UACCESS = 'UACCESS';
 
 /**
  * Base error for all fe2 stuff.
@@ -15,7 +13,8 @@ export abstract class ClientError extends Error {
         if (this.stack) {
             return;
         }
-        if (Error.captureStackTrace) { // chrome etc.
+        if (Error.captureStackTrace) {
+            // chrome etc.
             Error.captureStackTrace(this, this.constructor);
             return;
         }
@@ -69,7 +68,7 @@ export abstract class ResponseError extends ClientError {
  * credentials.
  */
 export class AuthenticationFailedError extends ResponseError {
-    constructor(res: IncomingMessage | string) {
+    constructor(res: IncomingMessage | string, public code?: ErrorCode | StringError) {
         super(res);
         AuthenticationFailedError.setProto(this);
     }
