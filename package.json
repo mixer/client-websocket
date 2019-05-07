@@ -1,6 +1,6 @@
 {
   "name": "@mixer/chat-client-websocket",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "description": "Websocket wrapper for Mixer's chat websocket uses",
   "main": "dist/commonjs/index.js",
   "module": "dist/module/index.js",
@@ -50,8 +50,5 @@
     "singleQuote": true,
     "printWidth": 100,
     "parser": "typescript"
-  },
-  "publishConfig": {
-    "registry": "https://watchmixer.pkgs.visualstudio.com/_packaging/mixer/npm/registry/"
   }
 }
