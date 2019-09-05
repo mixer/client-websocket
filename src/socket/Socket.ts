@@ -111,6 +111,7 @@ export interface ISocketOptions {
     callTimeout?: number;
     protocolVersion?: string;
     clientId: string;
+    automaticallyReconnect?: boolean;
 }
 
 /**
@@ -196,6 +197,7 @@ export class Socket extends EventEmitter {
             callTimeout: 20 * 1000,
             protocolVersion: '1.0',
             clientId: null,
+            automaticallyReconnect: true,
             ...options,
         };
 
@@ -280,7 +282,7 @@ export class Socket extends EventEmitter {
         this.ws = null;
         this.removeAllListeners('WelcomeEvent');
 
-        if (this.status === Socket.CLOSING) {
+        if (this.status === Socket.CLOSING || !this.options.automaticallyReconnect) {
             this.status = Socket.CLOSED;
             this.emit('closed');
             return;
