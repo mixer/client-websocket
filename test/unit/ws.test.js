@@ -1,8 +1,12 @@
 'use strict';
 
-const { expect } = require('chai');
+const chai = require('chai');
 const sinon = require('sinon');
+const sinonChai = require('sinon-chai');
 const { EventEmitter } = require('events');
+
+chai.use(sinonChai);
+const expect = chai.expect;
 
 const CLIENT_ID = 'abc123';
 
@@ -14,7 +18,7 @@ describe('websocket', () => {
         TimeoutError,
         NoMethodHandlerError,
         UnknownCodeError,
-    } = require('../src');
+    } = require('../../src');
     let socket;
     let raw;
     let factoryStub;
