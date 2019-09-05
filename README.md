@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/mixer/client-node.svg)](https://travis-ci.org/mixer/client-websocket) [![](https://badges.gitter.im/mixer/developers.png)](https://gitter.im/mixer/developers)
 
-This is a client websocket library for [Mixer](https://mixer.com) written in Node.js.
+This is a client websocket library for [Mixer](https://mixer.com)'s Chat Service written in Node.js.
 
 ## Getting Started.
 
