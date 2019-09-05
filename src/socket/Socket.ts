@@ -678,6 +678,10 @@ export class Socket extends EventEmitter {
         }
     }
 
+    public getSpoolLength(): number {
+        return this._spool.length;
+    }
+
     private callAuth(args: AuthArgs, options?: ICallOptions): Promise<IUserAuthenticated> {
         return this.call(authMethod, args, options).catch((err: IPacket['error']) => {
             // If server returns Internal Server Error, close the socket and try again

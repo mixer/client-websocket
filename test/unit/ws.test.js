@@ -3,9 +3,11 @@
 const chai = require('chai');
 const sinon = require('sinon');
 const sinonChai = require('sinon-chai');
+const subset = require('chai-subset');
 const { EventEmitter } = require('events');
 
 chai.use(sinonChai);
+chai.use(subset);
 const expect = chai.expect;
 
 const CLIENT_ID = 'abc123';
@@ -196,7 +198,8 @@ describe('websocket', () => {
         it('spools when not connected', done => {
             sinon.stub(socket, 'isConnected').returns(false);
             socket.on('spooled', subData => {
-                expect(raw.send.called).to.be.false;
+                expect(raw.send.called).to.eq(false);
+                expect(socket.getSpoolLength()).to.not.eq(0);
                 expect(socket._spool).to.containSubset([{ data: subData }]);
                 done();
             });
