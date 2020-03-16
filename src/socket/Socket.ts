@@ -3,6 +3,7 @@ import * as NodeWebSocket from 'ws';
 
 import {
     IChatMessage,
+    IClearMessage,
     IDeleteMessage,
     IPollEvent,
     IPurgeMessage,
@@ -45,9 +46,11 @@ function isNodeWebSocket(socket: any): socket is NodeWebSocket {
 }
 
 function isReactNative() {
-    return (typeof document === 'undefined'
-        && typeof navigator !== 'undefined'
-        && navigator.product === 'ReactNative');
+    return (
+        typeof document === 'undefined' &&
+        typeof navigator !== 'undefined' &&
+        navigator.product === 'ReactNative'
+    );
 }
 
 /**
@@ -170,7 +173,7 @@ export class Socket extends EventEmitter {
     public on(event: 'authresult', cb: (res: IUserAuthenticated) => any): this;
     public on(event: 'packet', cb: (packet: any) => any): this;
     public on(event: 'ChatMessage', cb: (message: IChatMessage) => any): this;
-    public on(event: 'ClearMessages', cb: () => void): this;
+    public on(event: 'ClearMessages', cb: (clear: IClearMessage) => any): this;
     public on(event: 'DeleteMessage', cb: (message: IDeleteMessage) => any): this;
     public on(event: 'PollStart', cb: (poll: IPollEvent) => any): this;
     public on(event: 'PollEnd', cb: (poll: IPollEvent) => any): this;
@@ -618,7 +621,7 @@ export class Socket extends EventEmitter {
     public call(method: 'whisper', args: [string, string], options?: ICallOptions): Promise<any>;
     public call(method: 'history', args: [number], options?: ICallOptions): Promise<IChatMessage[]>;
     public call(method: 'timeout', args: [string, string], options?: ICallOptions): Promise<string>;
-    public call(method: 'optOutEvents', args: (string)[], options?: ICallOptions): Promise<void>;
+    public call(method: 'optOutEvents', args: string[], options?: ICallOptions): Promise<void>;
     public call(method: 'ping', args: [any]): Promise<any>;
     public call(method: 'vote:start', args: [string, string[], number]): Promise<void>;
     public call(method: string, args: (string | number)[], options?: ICallOptions): Promise<any>;
