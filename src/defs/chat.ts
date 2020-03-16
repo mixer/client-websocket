@@ -75,7 +75,8 @@ export interface IMessageTagComponent {
     id: number;
 }
 
-export type MessagePart = IMessageTextComponent
+export type MessagePart =
+    | IMessageTextComponent
     | IMessageEmoticonComponent
     | IMessageLinkComponent
     | IMessageTagComponent;
@@ -140,7 +141,6 @@ export interface IUserUpdate {
 }
 
 export interface IPollEvent {
-
     /**
      * The question being asked.
      */
@@ -215,6 +215,27 @@ export interface IDeleteMessage {
      * The message Id.
      */
     id: string;
+    /**
+     * The moderator that performed the action.
+     */
+    moderator: {
+        /**
+         * The moderator's Id.
+         */
+        user_id: number;
+        /**
+         * The moderator's name.
+         */
+        user_name: string;
+        /**
+         * The roles the moderator has.
+         */
+        user_roles: string[];
+        /**
+         * The level of the moderator
+         */
+        user_level: number;
+    };
 }
 
 export interface IPurgeMessage {
