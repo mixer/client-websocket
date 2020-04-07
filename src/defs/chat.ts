@@ -243,6 +243,40 @@ export interface IPurgeMessage {
      * The user's Id.
      */
     user_id: number;
+    /**
+     * The moderator that performed the action.
+     */
+    moderator: {
+        /**
+         * The moderator's Id.
+         */
+        user_id: number;
+        /**
+         * The moderator's name.
+         */
+        user_name: string;
+        /**
+         * The roles the moderator has.
+         */
+        user_roles: string[];
+        /**
+         * The level of the moderator
+         */
+        user_level: number;
+    };
+    /**
+     * The cause of the purge
+     */
+    cause: {
+        /**
+         * The type of action that was performed to cause the purge.
+         */
+        type: 'ban' | 'timeout' | 'globaltimeout';
+        /**
+         * Optional raw length that was passed from the moderator for timeouts.
+         */
+        durationString?: string;
+    };
 }
 
 export interface IUserTimeout {
@@ -264,4 +298,25 @@ export interface IUserTimeout {
      * The duration of the timeout.
      */
     duration: number;
+}
+
+export interface IClearMessage {
+    clearer: {
+        /**
+         * The moderator's Id.
+         */
+        user_id: number;
+        /**
+         * The moderator's name.
+         */
+        user_name: string;
+        /**
+         * The roles the moderator has.
+         */
+        user_roles: string[];
+        /**
+         * The level of the moderator
+         */
+        user_level: number;
+    };
 }
