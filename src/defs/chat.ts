@@ -320,3 +320,91 @@ export interface IClearMessage {
         user_level: number;
     };
 }
+
+export interface ISkillAttribution {
+    /**
+     * The Id of the message.
+     */
+    id: string;
+    /**
+     * The skill being triggered
+     */
+    skill: {
+        /**
+         * The skill's Id.
+         */
+        skill_id: string;
+        /**
+         * The skill's name.
+         */
+        skill_name: string;
+        /**
+         * The skill's execution id.
+         */
+        execution_id: string;
+        /**
+         * The skill's icon url.
+         */
+        icon_url: string;
+        /**
+         * The amount of currency used to trigger skill.
+         */
+        cost: number;
+        /**
+         * The type of currency used to trigger skill.
+         */
+        currency: 'Sparks' | 'Embers';
+    };
+    /**
+     * The user's Id.
+     */
+    user_id: number;
+    /**
+     * The user's level.
+     */
+    user_level: number;
+    /**
+     * The user's name.
+     */
+    user_name: string;
+    /**
+     * The roles the user has.
+     */
+    user_roles: string[];
+    /**
+     * The user's avatar url
+     */
+    user_avatar: string;
+    /**
+     * The message payload.
+     */
+    message: IMessagePacketComponents;
+}
+
+export interface IDeleteSkillAttribution {
+    /**
+     * The skill's execution id.
+     */
+    execution_id: string;
+    /**
+     * The moderator that performed the action.
+     */
+    moderator: {
+        /**
+         * The moderator's Id.
+         */
+        user_id: number;
+        /**
+         * The moderator's name.
+         */
+        user_name: string;
+        /**
+         * The roles the moderator has.
+         */
+        user_roles: string[];
+        /**
+         * The level of the moderator
+         */
+        user_level: number;
+    };
+}
