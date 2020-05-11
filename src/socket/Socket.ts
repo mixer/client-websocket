@@ -11,6 +11,8 @@ import {
     IUserConnection,
     IUserTimeout,
     IUserUpdate,
+    IDeleteSkillAttribution,
+    ISkillAttribution,
 } from '../defs/chat';
 import {
     AuthenticationFailedError,
@@ -182,6 +184,8 @@ export class Socket extends EventEmitter {
     public on(event: 'UserLeave', cb: (join: IUserConnection) => any): this;
     public on(event: 'UserTimeout', cb: (timeout: IUserTimeout) => any): this;
     public on(event: 'UserUpdate', cb: (update: IUserUpdate) => any): this;
+    public on(event: 'SkillAttribution', cb: (update: ISkillAttribution) => any): this;
+    public on(event: 'DeleteSkillAttribution', cb: (update: IDeleteSkillAttribution) => any): this;
     // tslint:disable-next-line: no-unnecessary-override
     public on(event: string, cb: any): this {
         return super.on(event, cb);
